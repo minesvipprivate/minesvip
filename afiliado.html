@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Aleatório</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // URLs dos links
+        const link1 = "hhttps://ganho.win/yp21h65xy"; // 60% de chance
+        const link2 = "https://ganho.win/yp21h65xy"; // 40% de chance
+
+        // Função para escolher o link aleatoriamente
+        function getRandomLink() {
+            const random = Math.random();
+            if (random < 0.6) {
+                return link1;
+            } else {
+                return link2;
+            }
+        }
+
+        // Verifica se há um link salvo no localStorage
+        let savedLink = localStorage.getItem('selectedLink');
+        
+        if (!savedLink) {
+            // Se não houver link salvo, escolhe um aleatoriamente
+            savedLink = getRandomLink();
+            localStorage.setItem('selectedLink', savedLink);
+        }
+
+        // Adiciona o iframe com o link selecionado
+        const iframe = document.createElement('iframe');
+        iframe.src = savedLink;
+        document.body.appendChild(iframe);
+    </script>
+
+
+</body></html>
